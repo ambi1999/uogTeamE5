@@ -1,0 +1,348 @@
+//*****************************************************************************************************
+//********************************CT4003 Parking Sensor Project****************************************
+//*****************************************************************************************************
+int numTimePressed = 0; //the counter starts at 0
+int sensorValue;
+const int sensorClose = 0;
+const int sensorNear = 250;
+const int sensorAverage = 500;
+const int sensorFar = 750;
+const int sensorMax = 1000;
+
+//LED pin
+ int ledPin13 = 13; //Reverse
+ int ledPin12 = 12; //Forward
+ int ledPin11 = 11; //Left
+ int ledPin10 = 10; //Right
+
+//sensor pin
+ int sensorReverse = A1;
+ int sensorForward = A2;
+ int sensorLeft = A3;
+ int sensorRight = A4;
+
+//button pin
+const int button = 3;
+
+
+void setup() 
+{
+
+//outputs
+pinMode (ledPin13, OUTPUT);
+pinMode (ledPin12, OUTPUT);
+pinMode (ledPin11, OUTPUT);
+pinMode (ledPin10, OUTPUT);
+//inputs
+pinMode (sensorReverse, INPUT);
+pinMode (sensorForward, INPUT);
+pinMode (sensorLeft, INPUT);
+pinMode (sensorRight, INPUT);
+pinMode (button, INPUT);
+
+}
+
+//*****************************************************************************************************
+//************************************Reversing ONLY***************************************************
+//*****************************************************************************************************
+
+void ReversingOnly ()
+{
+//When the sensor value is between 0 and 250 the LEDs will be on
+while ( sensorValue > sensorClose && sensorValue < sensorNear)
+{
+digitalWrite (13, HIGH); 
+sensorValue = sensorReverse;
+}
+
+//When the sensor value is between 250 and 500 the LEDs will blink fast
+while (sensorValue > sensorNear && sensorValue < sensorAverage) 
+{
+    digitalWrite (13,HIGH);
+        delay (50);
+    digitalWrite (13,LOW);
+        delay (50);
+    sensorValue = sensorReverse;
+}
+
+//When the sensor value is between 500 and 750 the LEDs will blink fast
+while (sensorValue > sensorAverage && sensorValue < sensorFar) 
+{
+    digitalWrite (13,HIGH);
+        delay (100);
+    digitalWrite (13,LOW);
+        delay (100);
+
+    sensorValue = sensorReverse;
+}
+
+//When the sensor value is between 750 and 1000 the LEDs will blink slowly
+while (sensorValue > sensorFar && sensorValue < sensorMax) 
+{
+    digitalWrite (13,HIGH);
+        delay (200);
+    digitalWrite (13,LOW);
+        delay (200);
+
+    sensorValue = sensorReverse;
+}
+
+
+
+//When the sensor value is more than 1000 the LEDs will be off
+
+while (sensorValue > sensorMax) 
+{
+    digitalWrite (13,LOW);
+    sensorValue = sensorReverse;
+}
+
+}
+
+//*****************************************************************************************************
+//**********************************All Sensors Together***********************************************
+//*****************************************************************************************************
+
+void AllSensors ()
+{
+
+//*****************************************reverse*****************************************************
+
+//When the sensor value is between 0 and 250 the LEDs will be on
+while ( sensorValue > sensorClose && sensorValue < sensorNear)
+{
+digitalWrite (13, HIGH); 
+sensorValue = sensorReverse;
+}
+
+//When the sensor value is between 250 and 500 the LEDs will blink fast
+while (sensorValue > sensorNear && sensorValue < sensorAverage) 
+{
+    digitalWrite (13,HIGH);
+        delay (50);
+    digitalWrite (13,LOW);
+        delay (50);
+    sensorValue = sensorReverse;
+}
+
+//When the sensor value is between 500 and 750 the LEDs will blink fast
+while (sensorValue > sensorAverage && sensorValue < sensorFar) 
+{
+    digitalWrite (13,HIGH);
+        delay (100);
+    digitalWrite (13,LOW);
+        delay (100);
+
+    sensorValue = sensorReverse;
+}
+
+//When the sensor value is between 750 and 1000 the LEDs will blink slowly
+while (sensorValue > sensorFar && sensorValue < sensorMax) 
+{
+    digitalWrite (13,HIGH);
+        delay (200);
+    digitalWrite (13,LOW);
+        delay (200);
+
+    sensorValue = sensorReverse;
+}
+
+
+
+//When the sensor value is more than 1000 the LEDs will be off
+
+while (sensorValue > sensorMax) 
+{
+    digitalWrite (13,LOW);
+    sensorValue = sensorReverse;
+}
+
+//*****************************************forward*****************************************************
+
+//When the sensor value is between 0 and 250 the LEDs will be on
+while ( sensorValue > sensorClose && sensorValue < sensorNear)
+{
+digitalWrite (12, HIGH); 
+sensorValue = sensorForward;
+}
+
+//When the sensor value is between 250 and 500 the LEDs will blink fast
+while (sensorValue > sensorNear && sensorValue < sensorAverage) 
+{
+    digitalWrite (12,HIGH);
+        delay (50);
+    digitalWrite (12,LOW);
+        delay (50);
+    sensorValue = sensorForward;
+}
+
+//When the sensor value is between 500 and 750 the LEDs will blink fast
+while (sensorValue > sensorAverage && sensorValue < sensorFar) 
+{
+    digitalWrite (12,HIGH);
+        delay (100);
+    digitalWrite (12,LOW);
+        delay (100);
+
+    sensorValue = sensorForward;
+}
+
+//When the sensor value is between 750 and 1000 the LEDs will blink slowly
+while (sensorValue > sensorFar && sensorValue < sensorMax) 
+{
+    digitalWrite (12,HIGH);
+        delay (200);
+    digitalWrite (12,LOW);
+        delay (200);
+
+    sensorValue = sensorForward;
+}
+
+
+
+//When the sensor value is more than 1000 the LEDs will be off
+
+while (sensorValue > sensorMax) 
+{
+    digitalWrite (12,LOW);
+    sensorValue = sensorForward;
+}
+
+//*******************************************left******************************************************
+//When the sensor value is between 0 and 250 the LEDs will be on
+while ( sensorValue > sensorClose && sensorValue < sensorNear)
+{
+digitalWrite (11, HIGH); 
+sensorValue = sensorLeft;
+}
+
+//When the sensor value is between 250 and 500 the LEDs will blink fast
+while (sensorValue > sensorNear && sensorValue < sensorAverage) 
+{
+    digitalWrite (11,HIGH);
+        delay (50);
+    digitalWrite (11,LOW);
+        delay (50);
+    sensorValue = sensorLeft;
+}
+
+//When the sensor value is between 500 and 750 the LEDs will blink fast
+while (sensorValue > sensorAverage && sensorValue < sensorFar) 
+{
+    digitalWrite (11,HIGH);
+        delay (100);
+    digitalWrite (11,LOW);
+        delay (100);
+
+    sensorValue = sensorLeft;
+}
+
+//When the sensor value is between 750 and 1000 the LEDs will blink slowly
+while (sensorValue > sensorFar && sensorValue < sensorMax) 
+{
+    digitalWrite (11,HIGH);
+        delay (200);
+    digitalWrite (11,LOW);
+        delay (200);
+
+    sensorValue = sensorLeft;
+}
+
+
+
+//When the sensor value is more than 1000 the LEDs will be off
+
+while (sensorValue > sensorMax) 
+{
+    digitalWrite (11,LOW);
+    sensorValue = sensorLeft;
+}
+
+//******************************************right******************************************************
+//When the sensor value is between 0 and 250 the LEDs will be on
+while ( sensorValue > sensorClose && sensorValue < sensorNear)
+{
+digitalWrite (10, HIGH); 
+sensorValue = sensorRight;
+}
+
+//When the sensor value is between 250 and 500 the LEDs will blink fast
+while (sensorValue > sensorNear && sensorValue < sensorAverage) 
+{
+    digitalWrite (10,HIGH);
+        delay (50);
+    digitalWrite (10,LOW);
+        delay (50);
+    sensorValue = sensorRight;
+}
+
+//When the sensor value is between 500 and 750 the LEDs will blink fast
+while (sensorValue > sensorAverage && sensorValue < sensorFar) 
+{
+    digitalWrite (10,HIGH);
+        delay (100);
+    digitalWrite (10,LOW);
+        delay (100);
+
+    sensorValue = sensorRight;
+}
+
+//When the sensor value is between 750 and 1000 the LEDs will blink slowly
+while (sensorValue > sensorFar && sensorValue < sensorMax) 
+{
+    digitalWrite (10,HIGH);
+        delay (200);
+    digitalWrite (10,LOW);
+        delay (200);
+
+    sensorValue = sensorRight;
+}
+
+
+
+//When the sensor value is more than 1000 the LEDs will be off
+
+while (sensorValue > sensorMax) 
+{
+    digitalWrite (10,LOW);
+    sensorValue = sensorRight;
+}
+}
+
+//*****************************************************************************************************
+//************************************Button Pressing**************************************************
+//*****************************************************************************************************
+
+
+
+void loop() {
+if(digitalRead (3) == HIGH){
+numTimePressed = numTimePressed + 1;
+delay (1000);
+
+}
+
+if (numTimePressed == 1) // when button is pressed 1 time
+{
+ ReversingOnly();
+}
+
+else if (numTimePressed == 2) // when button is pressed 2 times
+{
+ AllSensors();
+}
+
+else if (numTimePressed == 3)// when button is pressed 3 times it resets
+{
+turnOff();
+}
+
+}
+
+
+
+
+
+//*****************************************************************************************************
+//**********************************Coded by Tom Cave S1305939*****************************************
+//*****************************************************************************************************
